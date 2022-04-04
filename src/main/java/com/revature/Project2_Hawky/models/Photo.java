@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.File;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,9 +18,9 @@ public class Photo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "url", nullable = false, unique = true)
-    private Integer postId;
+    @ManyToOne
+    private User postId;
 
-    @Column(name = "photo_url", nullable = false, length = 333)
-    private String photoUrl;
+    @Column(nullable = false, length = 333)
+    private File photo;
 }
