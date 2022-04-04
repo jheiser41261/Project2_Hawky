@@ -21,6 +21,6 @@ public class Photo {
     @ManyToOne
     private User postId;
 
-    @Column(nullable = false, length = 333)
+    @Column(nullable = false)
     private File photo;
 }
