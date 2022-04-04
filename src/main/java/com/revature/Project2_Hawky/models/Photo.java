@@ -18,7 +18,6 @@ public class Photo {
     private int id;
 
     @Column(name = "url", nullable = false, unique = true)
-    private String url;
     private Integer postId;
 
     @Column(name = "photo_url", nullable = false, length = 333)
