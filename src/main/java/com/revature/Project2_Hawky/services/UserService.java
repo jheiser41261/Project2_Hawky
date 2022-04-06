@@ -15,6 +15,7 @@ public class UserService {
     private UserDAO userDAO;
 
     public UserService(UserDAO userDAO){
+
         this.userDAO = userDAO;
     }
 
@@ -24,10 +25,12 @@ public class UserService {
     }
 
     public User getUserById(Integer userId){
+
         return userDAO.getUserById(userId);
     }
 
     public User getUserByUsername(String username){
+
         return userDAO.getUserByUsername(username);
     }
 
