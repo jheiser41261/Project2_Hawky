@@ -1,12 +1,20 @@
 package com.revature.Project2_Hawky.repos;
 
+import com.revature.Project2_Hawky.models.Photo;
 import org.aspectj.util.FileUtil;
 import org.springframework.stereotype.Repository;
+
+import java.io.File;
 
 @Repository
 public interface PhotoDAO {
 
-    FileUtil getPhoto(int photoId);
+    void save(Photo photo);
 
-    FileUtil delPhoto(int photoId);
+    void delete(Photo photo);
+
+    Photo findById(int photoId);
+
+    void update(Photo photo);
+
 }
