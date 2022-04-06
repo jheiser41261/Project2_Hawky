@@ -19,7 +19,7 @@ public class Photo {
     private int photoId;
 
     @ManyToOne
-    private User postId;
+    private Post postId;
 
     @Column(nullable = false)
     private File photo;
