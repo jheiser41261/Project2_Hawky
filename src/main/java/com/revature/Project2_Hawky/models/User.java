@@ -13,6 +13,16 @@ import java.io.File;
 @Entity
 @Table(name = "users")
 public class User {
+
+    public User (String username){
+        this.username = username;
+    }
+
+    public User(String username, String password){
+        this.username = username;
+        this.password = password;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;

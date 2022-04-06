@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 @Repository
@@ -16,14 +17,25 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public User getUserById(Integer userId) {
         Session session = em.unwrap(Session.class);
-        return session.get(User.class, userId);
+
+        try {
+            return session.get(User.class, userId);
+        } catch(NoResultException nre){
+            return null;
+        }
     }
 
     @Override
     public User getUserByUsername(String username) {
         Session session = em.unwrap(Session.class);
-        return session.createQuery("from User where username = '" + username + "'", User.class)
-                .getSingleResult();
+
+
+        try {
+            return session.createQuery("from User where username = '" + username + "'", User.class).getSingleResult();
+        } catch(NoResultException nre){
+            return null;
+        }
+
     }
 
     @Override

@@ -32,7 +32,4 @@ public class UserController {
         return userService.updateInfo(user);
     }
 
-    //todo Add Login, Logout, and Check-Session
-
-
 }
