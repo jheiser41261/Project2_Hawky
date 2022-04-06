@@ -22,7 +22,8 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public User getUserByUsername(String username) {
         Session session = em.unwrap(Session.class);
-        return session.createQuery("from User where username = '" + username + "'", User.class).getSingleResult();
+        return session.createQuery("from User where username = '" + username + "'", User.class)
+                .getSingleResult();
     }
 
     @Override
