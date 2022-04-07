@@ -2,11 +2,13 @@ package com.revature.Project2_Hawky.repos;
 
 import com.revature.Project2_Hawky.models.Photo;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.io.File;
 
+@Repository
 public class PhotoDAOImpl implements PhotoDAO {
 
     @PersistenceContext

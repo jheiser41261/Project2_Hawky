@@ -13,8 +13,13 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "posts")
-
 public class Post {
+
+    public Post(String message, User author){
+        this.message = message;
+        this.author = author;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer postId;
@@ -26,7 +31,7 @@ public class Post {
     @Column(nullable = false)
     private String message;
 
-    @Column()
+    @Column(columnDefinition = "int default 0")
     private Integer likeCount;
 
     @CreationTimestamp
