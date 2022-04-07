@@ -1,7 +1,6 @@
 package com.revature.Project2_Hawky.repos;
 
 import com.revature.Project2_Hawky.models.Photo;
-import org.aspectj.util.FileUtil;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -13,17 +12,17 @@ public class PhotoDAOImpl implements PhotoDAO {
     private EntityManager em;
 
     @Override
-    public void save(Photo photo) {
+    public void save(File photo) {
         em.persist(photo);
     }
 
     @Override
-    public void update(Photo photo) {
+    public void update(File photo) {
         em.merge(photo);
     }
 
     @Override
-    public void delete(Photo photo) {
+    public void delete(File photo) {
         em.remove(photo);
     }
 
