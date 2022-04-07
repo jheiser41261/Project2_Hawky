@@ -3,6 +3,7 @@ package com.revature.Project2_Hawky.services;
 import com.revature.Project2_Hawky.models.Post;
 import com.revature.Project2_Hawky.models.User;
 import com.revature.Project2_Hawky.repos.PostDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 public class PostService {
 
+    @Autowired
     private PostDAO postDAO;
 
     public PostService(PostDAO postDAO){
@@ -30,6 +32,11 @@ public class PostService {
     public Post getPostByUsername(User user){
 
         return postDAO.getPostByUsername(user);
+    }
+
+    public void deletePost(Integer postId){
+        Post post = this.postDAO.getPostById(postId);
+        this.postDAO.deletePost(post);
     }
 
 
