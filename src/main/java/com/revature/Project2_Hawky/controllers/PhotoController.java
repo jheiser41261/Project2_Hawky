@@ -19,8 +19,8 @@ public class PhotoController {
     }
 
     @PostMapping
-    public Photo save(@RequestBody File photo){
-        return photoService.save(photo);
+    public void save(@RequestBody File photo){
+        photoService.save(photo);
     }
 
     @GetMapping("{photoId}")
@@ -29,8 +29,8 @@ public class PhotoController {
     }
 
     @PatchMapping("")
-    public Photo update(@PathVariable File photo){
-        return photoService.update(photo);
+    public void update(@PathVariable File photo){
+        photoService.update(photo);
     }
 
     @DeleteMapping("{photo}")
