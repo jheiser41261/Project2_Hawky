@@ -1,6 +1,7 @@
 package com.revature.Project2_Hawky.repos;
 
 import com.revature.Project2_Hawky.models.Photo;
+import org.hibernate.Session;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -13,21 +14,25 @@ public class PhotoDAOImpl implements PhotoDAO {
 
     @Override
     public void save(File photo) {
+        Session session = em.unwrap(Session.class);
         em.persist(photo);
     }
 
     @Override
     public void update(File photo) {
+        Session session = em.unwrap(Session.class);
         em.merge(photo);
     }
 
     @Override
     public void delete(File photo) {
+        Session session = em.unwrap(Session.class);
         em.remove(photo);
     }
 
     @Override
     public Photo findById(int photoId) {
+        Session session = em.unwrap(Session.class);
         return em.find(Photo.class, photoId);
     }
 
