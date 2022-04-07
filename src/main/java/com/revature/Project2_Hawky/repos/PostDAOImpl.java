@@ -22,10 +22,9 @@ public class PostDAOImpl implements PostDAO {
     }
 
     @Override //double check
-//    public Post getPostByUsername(String username) {
     public Post getPostByUsername(User user) {
         Session session = em.unwrap(Session.class);
-        return session.createQuery("from Post where author = '" + user + "'", Post.class)
+        return session.createQuery("from Post where author = '" + user.getUserId() + "'", Post.class)
                 .getSingleResult();
     }
 

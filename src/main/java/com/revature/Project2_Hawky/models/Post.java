@@ -20,6 +20,7 @@ public class Post {
     private Integer postId;
 
     @ManyToOne
+    @JoinColumn(name = "author_userId")
     private User author;
 
     @Column(nullable = false)
