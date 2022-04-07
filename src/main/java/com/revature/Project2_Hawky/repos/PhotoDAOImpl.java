@@ -27,8 +27,8 @@ public class PhotoDAOImpl implements PhotoDAO {
     }
 
     @Override
-    public Photo findById(int id) {
-        return em.find(Photo.class, id);
+    public Photo findById(int photoId) {
+        return em.find(Photo.class, photoId);
     }
 
 }
