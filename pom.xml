@@ -51,19 +51,24 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.11.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<version>2.6.5</version>
+		</dependency>
+
 		<!--		AWS Utils     -->
 		<dependency>
-		<groupId>software.amazon.awssdk</groupId>
-		<artifactId>bom</artifactId>
-		<version>2.17.16</version>
-		<type>pom</type>
-		<scope>import</scope>
+			<groupId>io.awspring.cloud</groupId>
+			<artifactId>spring-cloud-aws-context</artifactId>
+			<version>2.4.0</version>
 		</dependency>
 		<dependency>
-			<groupId>software.amazon.awssdk</groupId>
-			<artifactId>s3-transfer-manager</artifactId>
-			<version>2.17.16-PREVIEW</version>
+			<groupId>io.awspring.cloud</groupId>
+			<artifactId>spring-cloud-aws-autoconfigure</artifactId>
+			<version>2.4.0</version>
 		</dependency>
+
 		<!--		Logger       -->
 		<dependency>
 			<groupId>log4j</groupId>

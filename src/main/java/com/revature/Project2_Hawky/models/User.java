@@ -52,5 +52,5 @@ public class User {
     private String occupation;
 
     @Column
-    private File profilePicture;
+    private String profilePhoto;
 }
