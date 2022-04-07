@@ -41,7 +41,7 @@ public class PostDAOImpl implements PostDAO {
     }
 
     @Override
-    public void updateLike(Post post) {
+    public void updatePost(Post post) {
         Session session = em.unwrap(Session.class);
         session.update(post);
     }

@@ -5,6 +5,7 @@ import com.revature.Project2_Hawky.models.User;
 import com.revature.Project2_Hawky.services.PostService;
 import com.revature.Project2_Hawky.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -36,6 +37,10 @@ public class PostController {
         return postService.createPost(post);
     }
 
+    @PatchMapping("{postId}/{like}")
+    public Post addLike(@PathVariable Integer postId, @PathVariable Integer like){
+        return postService.addLike(postId,like);
+    }
 
     @DeleteMapping("{postId}")
     public String deletePost(@PathVariable Integer postId){

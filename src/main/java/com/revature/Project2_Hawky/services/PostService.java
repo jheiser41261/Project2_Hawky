@@ -39,6 +39,13 @@ public class PostService {
         this.postDAO.deletePost(post);
     }
 
+    public Post addLike(Integer postId, Integer like){
+        Post post = postDAO.getPostById(postId);
 
+        post.setLikeCount(like);
+
+        postDAO.updatePost(post);
+        return post;
+    }
 
 }
