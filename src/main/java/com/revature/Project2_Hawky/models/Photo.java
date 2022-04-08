@@ -3,9 +3,10 @@ package com.revature.Project2_Hawky.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import java.io.File;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,13 +15,20 @@ import java.io.File;
 @Table(name = "photos")
 public class Photo {
 
+    public Photo(Post post, String photo){
+        this.post = post;
+        this.photo = photo;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int photoId;
+    private Integer photoId;
 
     @ManyToOne
-    private Post postId;
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "post_postId")
+    private Post post;
 
     @Column(nullable = false)
-    private File photo;
+    private String photo;
 }

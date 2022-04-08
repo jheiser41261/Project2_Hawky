@@ -31,13 +31,13 @@ public class AWSS3Service implements FileService {
         metadata.setContentType(file.getContentType());
 
         try{
-            awsS3Client.putObject("hawky-profile-photo-bucket", key, file.getInputStream(), metadata);
+            awsS3Client.putObject("hawky-photo-bucket", key, file.getInputStream(), metadata);
         } catch(IOException e){
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "An exception occurred while uploading the file");
         }
 
-        awsS3Client.setObjectAcl("hawky-profile-photo-bucket", key, CannedAccessControlList.PublicRead);
+        awsS3Client.setObjectAcl("hawky-photo-bucket", key, CannedAccessControlList.PublicRead);
 
-        return awsS3Client.getResourceUrl("hawky-profile-photo-bucket", key);
+        return awsS3Client.getResourceUrl("hawky-photo-bucket", key);
     }
 }

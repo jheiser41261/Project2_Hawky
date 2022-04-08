@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,6 +14,11 @@ import java.util.Date;
 @Entity
 @Table(name = "posts")
 public class Post {
+
+    public Post(Integer postId, String message){
+        this.postId = postId;
+        this.message = message;
+    }
 
     public Post(String message, User author){
         this.message = message;
@@ -31,7 +36,7 @@ public class Post {
     @Column(nullable = false)
     private String message;
 
-    @Column(columnDefinition = "int default 0")
+    @Column
     private Integer likeCount;
 
     @CreationTimestamp

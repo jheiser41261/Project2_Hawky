@@ -1,17 +1,15 @@
 package com.revature.Project2_Hawky.repos;
 
 import com.revature.Project2_Hawky.models.Photo;
-import org.springframework.stereotype.Repository;
-import java.io.File;
+import com.revature.Project2_Hawky.models.Post;
+
+import java.util.List;
 
 public interface PhotoDAO {
+    Integer uploadPhoto(Photo photo);
+    Photo getPhotoById(Integer photoId);
 
-    void save(File photo);
+    List<Photo> getPhotosByPost(Post post);
 
-    void delete(File photo);
-
-    Photo findById(int photoId);
-
-    void update(File photo);
-
+    void deletePhoto(Photo photo);
 }

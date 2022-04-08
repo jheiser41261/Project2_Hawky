@@ -1,41 +1,41 @@
 package com.revature.Project2_Hawky.repos;
 
 import com.revature.Project2_Hawky.models.Photo;
+import com.revature.Project2_Hawky.models.Post;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.io.File;
+import java.util.List;
 
 @Repository
 public class PhotoDAOImpl implements PhotoDAO {
 
     @PersistenceContext
-    private EntityManager em;
+    EntityManager em;
 
     @Override
-    public void save(File photo) {
+    public Integer uploadPhoto(Photo photo) {
         Session session = em.unwrap(Session.class);
-        em.persist(photo);
+        return (Integer) session.save(photo);
     }
 
     @Override
-    public void update(File photo) {
+    public Photo getPhotoById(Integer photoId) {
         Session session = em.unwrap(Session.class);
-        em.merge(photo);
+        return session.get(Photo.class, photoId);
     }
 
     @Override
-    public void delete(File photo) {
+    public List<Photo> getPhotosByPost(Post post) {
         Session session = em.unwrap(Session.class);
-        em.remove(photo);
+        return session.createQuery("from Photo where post = " + post.getPostId(), Photo.class).getResultList();
     }
 
     @Override
-    public Photo findById(int photoId) {
+    public void deletePhoto(Photo photo) {
         Session session = em.unwrap(Session.class);
-        return em.find(Photo.class, photoId);
+        session.delete(photo);
     }
-
 }

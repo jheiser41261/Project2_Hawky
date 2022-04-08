@@ -42,8 +42,11 @@ public class UserController {
     }
 
     @PutMapping
-    public User updateInfo(@RequestBody User user){
-        return userService.updateInfo(user);
+    public User updateInfo(HttpSession httpSession, @RequestBody User user){
+        User updatedUser = userService.updateInfo(user);
+        httpSession.setAttribute("user", updatedUser);
+
+        return updatedUser;
     }
 
     @PostMapping("upload")

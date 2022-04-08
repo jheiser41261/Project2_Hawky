@@ -11,11 +11,10 @@ import javax.transaction.Transactional;
 @Transactional
 public class UserService {
 
-    @Autowired
     private UserDAO userDAO;
 
+    @Autowired
     public UserService(UserDAO userDAO){
-
         this.userDAO = userDAO;
     }
 
@@ -25,12 +24,10 @@ public class UserService {
     }
 
     public User getUserById(Integer userId){
-
         return userDAO.getUserById(userId);
     }
 
     public User getUserByUsername(String username){
-
         return userDAO.getUserByUsername(username);
     }
 

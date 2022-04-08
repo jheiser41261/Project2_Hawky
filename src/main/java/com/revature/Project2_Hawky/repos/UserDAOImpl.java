@@ -29,13 +29,11 @@ public class UserDAOImpl implements UserDAO {
     public User getUserByUsername(String username) {
         Session session = em.unwrap(Session.class);
 
-
         try {
             return session.createQuery("from User where username = '" + username + "'", User.class).getSingleResult();
         } catch(NoResultException nre){
             return null;
         }
-
     }
 
     @Override
