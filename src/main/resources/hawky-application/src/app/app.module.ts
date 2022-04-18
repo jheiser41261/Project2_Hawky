@@ -9,6 +9,7 @@ import { PostItemComponent } from './components/posts/post-item/post-item.compon
 import { LoginComponent } from './components/sessions/login/login.component';
 import { RegisterComponent } from './components/sessions/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DashboardComponent } from './components/dashboard/dashboard/dashboard.c
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
