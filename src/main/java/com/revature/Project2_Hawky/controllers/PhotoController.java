@@ -17,6 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("photo")
+@CrossOrigin(origins = {"http://localhost:4200"}, allowCredentials = "true")
 public class PhotoController {
 
     private PhotoService photoService;

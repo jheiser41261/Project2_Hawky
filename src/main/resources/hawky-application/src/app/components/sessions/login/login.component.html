@@ -1,5 +1,8 @@
 <h3>Login Page</h3>
 
+<input type="text" [(ngModel)]="username" placeholder="Username">
+<input type="text" [(ngModel)]="password" placeholder="Password">
+
 <button (click)="login()">Login</button>
 <button (click)="checkSession()">Check Session</button>
 <button (click)="logout()">Logout</button>

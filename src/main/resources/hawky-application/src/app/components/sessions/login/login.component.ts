@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SessionServiceService } from 'src/app/services/session-service.service';
 
 @Component({
@@ -8,17 +9,20 @@ import { SessionServiceService } from 'src/app/services/session-service.service'
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private sessionService : SessionServiceService) { }
+  constructor(private sessionService : SessionServiceService, private router : Router) { }
 
-  username : string = "jah123";
-  password : string = "pass123";
+  username : string = "";
+  password : string = "";
 
   ngOnInit(): void {
+    this.logout();
   }
 
   login(){
     this.sessionService.login(this.username, this.password).subscribe(responseBody => {
       console.log(responseBody);
+
+      if(responseBody.success == true) this.router.navigate(['/dashboard'])
     });
   }
 

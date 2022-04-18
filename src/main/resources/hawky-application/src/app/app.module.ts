@@ -10,6 +10,7 @@ import { LoginComponent } from './components/sessions/login/login.component';
 import { RegisterComponent } from './components/sessions/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
