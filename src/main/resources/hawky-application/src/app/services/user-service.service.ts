@@ -25,4 +25,20 @@ export class UserServiceService {
       withCredentials: true
     });
   }
+
+  updateUserInfo(user : any){
+    return this.httpClient.put(`http://localhost:9000/user`, {
+        "userId" : user.userId,
+        "username" : user.username,
+        "password" : user.password,
+        "firstName" : user.firstName,
+        "lastName" : user.lastName,
+        "email" : user.email,
+        "city" : user.city,
+        "state" : user.state,
+        "occupation" : user.occupation
+    }, {
+      withCredentials: true
+    });
+  }
 }

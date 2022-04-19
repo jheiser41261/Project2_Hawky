@@ -1,6 +1,25 @@
-<h2>{{firstName}} {{lastName}}</h2>
-<h3>{{username}}</h3>
+<div class="info-container">
+    <img src={{profilePicUrl}} alt={{username}} style="max-height: 150px; max-width: 150px; padding: 10px;">
+    <span style="position: fixed; top: 20px;">
+        <form action="submit" *ngIf="isCurrentUser">
+            <div style="font-weight: bold">{{firstName}} {{lastName}}</div>
+            <div><input type="text" [(ngModel)]="occupation" name="occupation" style="border: none;" placeholder={{occupation}}></div>
+            <div><input type="text" [(ngModel)]="city" name="city" style="border: none;" placeholder={{city}}></div>
+            <div><input type="text" [(ngModel)]="state" name="state" style="border: none;" placeholder={{state}}></div>
+            <button (click)="editInfo()">Edit Info</button>
+        </form>
 
+        <div *ngIf="!isCurrentUser">
+            <div style="font-weight: bold">{{firstName}} {{lastName}}</div>
+            <div>{{occupation}}</div>
+            <div>{{city}}</div>
+            <div>{{state}}</div>
+        </div>
+    </span>
+</div>
+
+
+<h4>Posts by {{username}}</h4>
 <div *ngFor="let post of posts" class="postItem">
     <span>{{post.datePosted}} - </span>
     <span>{{post.message}}</span>
