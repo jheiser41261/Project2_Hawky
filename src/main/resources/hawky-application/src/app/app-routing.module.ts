@@ -8,7 +8,7 @@ import { RegisterComponent } from './components/sessions/register/register.compo
 const routes: Routes = [
   {path: "dashboard", component: DashboardComponent},
   {path: "register", component: RegisterComponent},
-  {path: "profile", component: ProfilePageComponent},
+  {path: "profile/:username", component: ProfilePageComponent},
 
   {path: "", component: LoginComponent},
   

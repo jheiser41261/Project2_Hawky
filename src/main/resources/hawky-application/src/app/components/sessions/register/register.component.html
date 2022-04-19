@@ -1,1 +1,11 @@
-<p>register works!</p>
+<h3>Registration Page</h3>
+
+<input type="text" [(ngModel)]="username" placeholder="Username">
+<input type="text" [(ngModel)]="password" placeholder="Password">
+<input type="text" [(ngModel)]="firstName" placeholder="First Name">
+<input type="text" [(ngModel)]="lastName" placeholder="Last Name">
+<input type="text" [(ngModel)]="email" placeholder="Email">
+
+<button (click)="register()">Register</button>
+
+<button (click)="login()">Sign In</button>

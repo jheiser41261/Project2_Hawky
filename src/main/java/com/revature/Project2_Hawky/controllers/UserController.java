@@ -1,5 +1,6 @@
 package com.revature.Project2_Hawky.controllers;
 
+import com.revature.Project2_Hawky.models.JsonResponse;
 import com.revature.Project2_Hawky.models.User;
 import com.revature.Project2_Hawky.services.AWSS3Service;
 import com.revature.Project2_Hawky.services.UserService;
@@ -28,39 +29,40 @@ public class UserController {
     }
 
     @GetMapping("{userId}")
-    public User getUserById(@PathVariable Integer userId){
-        return userService.getUserById(userId);
+    public JsonResponse getUserById(@PathVariable Integer userId){
+        User user = userService.getUserById(userId);
+        return new JsonResponse(true, "Information for User #" + user.getUserId(), user);
     }
 
     @GetMapping("username/{username}")
-    public User getUserByUsername(@PathVariable String username){
-        return userService.getUserByUsername(username);
+    public JsonResponse getUserByUsername(@PathVariable String username){
+        User user = userService.getUserByUsername(username);
+        return new JsonResponse(true, "Information for User " + user.getUsername(), user);
     }
 
     @PostMapping
-    public User createUser(@RequestBody User user){
-        return userService.createUser(user);
+    public JsonResponse createUser(@RequestBody User user){
+        User newUser = userService.createUser(user);
+        return new JsonResponse(true, "User created", newUser);
     }
 
     @PutMapping
-    public User updateInfo(HttpSession httpSession, @RequestBody User user){
+    public JsonResponse updateInfo(HttpSession httpSession, @RequestBody User user){
         User updatedUser = userService.updateInfo(user);
         httpSession.setAttribute("user", updatedUser);
 
-        return updatedUser;
+        return new JsonResponse(true, "User " + user.getUsername() + " updated", updatedUser);
     }
 
     @PostMapping("upload")
-    public ResponseEntity<Map<String, String>> uploadPhoto(HttpSession httpSession, @RequestParam("file") MultipartFile file){
+    public JsonResponse uploadPhoto(HttpSession httpSession, @RequestParam("file") MultipartFile file){
         String publicURL = awss3Service.uploadFile(file);
 
         User currentUser = (User) httpSession.getAttribute("user");
         currentUser.setProfilePhoto(publicURL);
         userService.updateInfo(currentUser);
 
-        Map<String, String> response = new HashMap<>();
-        response.put("publicURL", publicURL);
-        return new ResponseEntity<Map<String, String>>(response, HttpStatus.CREATED);
+        return new JsonResponse(true, "Picture uploaded successfully", publicURL);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.revature.Project2_Hawky.controllers;
 
+import com.revature.Project2_Hawky.models.JsonResponse;
 import com.revature.Project2_Hawky.models.Post;
 import com.revature.Project2_Hawky.models.User;
 import com.revature.Project2_Hawky.services.PostService;
@@ -25,57 +26,63 @@ public class PostController {
     }
 
     @GetMapping("author/{username}")
-    public List<Post> getPostsByAuthor(@PathVariable String username){
+    public JsonResponse getPostsByAuthor(@PathVariable String username){
         User author = userService.getUserByUsername(username);
-        return postService.getPostsByAuthor(author);
+        List<Post> posts = postService.getPostsByAuthor(author);
+        return new JsonResponse(true, "Posts by " + username, posts);
     }
 
     @GetMapping("all")
-    public List<Post> getAllPosts(){
-        return postService.getAllPosts();
+    public JsonResponse getAllPosts(){
+        List<Post> posts = postService.getAllPosts();
+        return new JsonResponse(true, "All posts", posts);
     }
 
     @GetMapping("{postId}")
-    public Post getPostById(@PathVariable Integer postId){
-        return postService.getPostById(postId);
+    public JsonResponse getPostById(@PathVariable Integer postId){
+        Post post = postService.getPostById(postId);
+        return new JsonResponse(true, "Post #" + postId, post);
     }
 
     @PostMapping
-    public Post createPost(HttpSession httpSession, @RequestBody Post post){
+    public JsonResponse createPost(HttpSession httpSession, @RequestBody Post post){
         User currentUser = (User) httpSession.getAttribute("user");
 
         if(currentUser == null)
-            return null;
+            return new JsonResponse(false, "You must be signed in to create a post", null);
 
         post.setAuthor(currentUser);
         post.setLikeCount(0);
 
-        return postService.createPost(post, currentUser);
+        Post newPost = postService.createPost(post, currentUser);
+        return new JsonResponse(true, "Post created", newPost);
     }
 
     @PutMapping
-    public Post editPost(HttpSession httpSession, @RequestBody Post post){
+    public JsonResponse editPost(HttpSession httpSession, @RequestBody Post post){
         User currentUser = (User) httpSession.getAttribute("user");
 
         if(currentUser == null)
-            return null;
+            return new JsonResponse(false, "You must be signed in to edit a post", null);
 
         post.setAuthor(currentUser);
 
-        return postService.editPost(post, currentUser);
+        Post editedPost = postService.editPost(post, currentUser);
+
+        return new JsonResponse(true, "Post edited", editedPost);
     }
 
     @DeleteMapping("delete/{postId}")
-    public String deletePost(HttpSession httpSession, @PathVariable Integer postId){
+    public JsonResponse deletePost(HttpSession httpSession, @PathVariable Integer postId){
         User currentUser = (User) httpSession.getAttribute("user");
 
         if(currentUser != null) {
             Post post = postService.getPostById(postId);
             postService.deletePost(post);
-            return "Post #" + postId + " deleted";
+            return new JsonResponse(true, "Post #" + postId + " deleted", null);
         }
 
-        return "Error";
+        return new JsonResponse(false, "Error", null);
     }
 
     @PatchMapping("like/{postId}")

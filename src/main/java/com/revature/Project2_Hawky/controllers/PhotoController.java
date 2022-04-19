@@ -1,5 +1,6 @@
 package com.revature.Project2_Hawky.controllers;
 
+import com.revature.Project2_Hawky.models.JsonResponse;
 import com.revature.Project2_Hawky.models.Photo;
 import com.revature.Project2_Hawky.models.Post;
 import com.revature.Project2_Hawky.services.AWSS3Service;
@@ -32,33 +33,33 @@ public class PhotoController {
     }
 
     @PostMapping("upload/{postId}")
-    public ResponseEntity<Map<String, String>> uploadPhoto(@PathVariable Integer postId, @RequestParam("photo")MultipartFile photo){
+    public JsonResponse uploadPhoto(@PathVariable Integer postId, @RequestParam("photo")MultipartFile photo){
         String publicURL = awss3Service.uploadFile(photo);
 
         Post post = postService.getPostById(postId);
         photoService.uploadPhoto(new Photo(post, publicURL));
 
-        Map<String, String> response = new HashMap<>();
-        response.put("publicURL", publicURL);
-        return new ResponseEntity<Map<String, String>>(response, HttpStatus.CREATED);
+        return new JsonResponse(true, "Picture uploaded successfully", publicURL);
     }
 
     @GetMapping("{photoId}")
-    public Photo getPhotoById(@PathVariable Integer photoId){
-        return photoService.getPhotoById(photoId);
+    public JsonResponse getPhotoById(@PathVariable Integer photoId){
+        Photo photo = photoService.getPhotoById(photoId);
+        return new JsonResponse(true, "URL for Photo #" + photoId, photo);
     }
 
     @GetMapping("post/{postId}")
-    public List<Photo> getPhotosByPost(@PathVariable Integer postId){
+    public JsonResponse getPhotosByPost(@PathVariable Integer postId){
         Post post = postService.getPostById(postId);
-        return photoService.getPhotosByPost(post);
+        List<Photo> photos = photoService.getPhotosByPost(post);
+        return new JsonResponse(true, "Photos for Post #" + postId, photos);
     }
 
     @DeleteMapping("delete/{photoId}")
-    public String deletePhoto(@PathVariable Integer photoId){
+    public JsonResponse deletePhoto(@PathVariable Integer photoId){
         Photo photo = photoService.getPhotoById(photoId);
         photoService.deletePhoto(photo);
-        return "Photo #" + photoId + " deleted";
+        return new JsonResponse(true, "Photo #" + photoId + " deleted", null);
     }
 }
 

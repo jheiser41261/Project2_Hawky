@@ -1,1 +1,7 @@
-<p>profile-page works!</p>
+<h2>{{firstName}} {{lastName}}</h2>
+<h3>{{username}}</h3>
+
+<div *ngFor="let post of posts" class="postItem">
+    <span>{{post.datePosted}} - </span>
+    <span>{{post.message}}</span>
+</div>

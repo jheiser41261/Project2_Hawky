@@ -1,1 +1,9 @@
-<p>post-container works!</p>
+<h3>All Posts</h3>
+
+<div class="container center">
+    <div *ngFor="let post of posts" class="postItem">
+        <span>{{post.datePosted}} - </span>
+        <span style="font-weight: bold; cursor: pointer;" (click)="goToProfile($event)">{{post.author.username}}</span>
+        <span> - {{post.message}}</span>
+    </div>
+</div>
