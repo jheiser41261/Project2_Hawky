@@ -23,10 +23,11 @@ export class RegisterComponent implements OnInit {
   register(){
     this.userService.register(this.username, this.password, this.firstName, this.lastName, this.email).subscribe(responseBody => {
       console.log(responseBody);
+      this.router.navigate(['']);
     });
   }
 
   login(){
-    this.router.navigate([''])
+    this.router.navigate(['']);
   }
 }

@@ -21,9 +21,9 @@ export class ProfilePageComponent implements OnInit {
   firstName : string = "";
   lastName : string = "";
 
-  occupation : string = "Occupation";
-  city : string = "City";
-  state : string = "State";
+  occupation : string = "";
+  city : string = "";
+  state : string = "";
 
   profilePicUrl : String = "https://hawky-photos-bucket.s3.amazonaws.com/3c56ca1c-37b8-4c0d-aa00-5baf9aca863c.png";
 
@@ -61,9 +61,10 @@ export class ProfilePageComponent implements OnInit {
       
       this.firstName = responseBody.data.firstName;
       this.lastName = responseBody.data.lastName;
-      this.occupation = responseBody.data.occupation;
-      this.city = responseBody.data.city;
-      this.state = responseBody.data.state;
+
+      this.occupation = (responseBody.data.occupation == "" || responseBody.data.occupation == null) ? "Occupation" : responseBody.data.occupation;
+      this.city = (responseBody.data.city == "" || responseBody.data.city == null) ? "City" : responseBody.data.city;
+      this.state = (responseBody.data.state == "" || responseBody.data.state == null) ? "State" : responseBody.data.state;
 
       if(this.currentUser.userId == responseBody.data.userId) this.isCurrentUser = true;
     })
@@ -79,7 +80,7 @@ export class ProfilePageComponent implements OnInit {
     this.user.occupation = this.occupation;
     this.user.city = this.city;
     
-    if(this.state.length > 2) this.state = "--";
+    if(this.state.length > 2) this.state = "State";
 
     this.user.state = this.state;
 
