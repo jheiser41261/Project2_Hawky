@@ -1,39 +1,3 @@
-/* #login-container{
-    background-color: rgba(128, 0, 0, 0.9);
-    padding: 20px;
-    margin-top: 15%;
-    width: 50%;
-    border-radius: 8px;
-
-    font-family: 'Cinzel', serif;
-}
-
-input{
-    border-radius: 6px;
-    width: 100%;
-    margin: 2px;
-}
-
-#login-button{
-    margin-top: 10px;
-    color: white;
-    background-color: rgb(90, 0, 0);
-
-    width: 50%;
-
-    font-family: 'Cinzel', serif;
-}
-
-#reg-button{
-    margin-top: 15px;
-    color: white;
-    background-color: rgb(90, 0, 0);
-
-    width: 25%;
-
-    font-family: 'Cinzel', serif;
-} */
-
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
 *{
   margin: 0;
