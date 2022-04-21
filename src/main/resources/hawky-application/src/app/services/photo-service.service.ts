@@ -13,4 +13,10 @@ export class PhotoServiceService {
       withCredentials: true
     });
   }
+
+  getPhotosByPost(postId : number){
+    return this.httpClient.get<any>(`http://localhost:9000/photo/post/${postId}`, {
+      withCredentials: true
+    });
+  }
 }
