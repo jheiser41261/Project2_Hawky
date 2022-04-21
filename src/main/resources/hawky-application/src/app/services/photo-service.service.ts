@@ -8,4 +8,9 @@ export class PhotoServiceService {
 
   constructor(private httpClient : HttpClient) { }
   
+  uploadPhoto(postId : number, body : FormData){
+    return this.httpClient.post<any>(`http://localhost:9000/photo/upload/${postId}`, body, {
+      withCredentials: true
+    });
+  }
 }

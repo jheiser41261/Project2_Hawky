@@ -4,3 +4,6 @@ update users set city=?, email=?, first_name=?, last_name=?, occupation=?, passw
 2022-04-19 22:55:14 jdbc[14]: exception
 org.h2.jdbc.JdbcSQLDataException: Value too long for column "STATE CHARACTER VARYING(2)": "'State' (5)"; SQL statement:
 update users set city=?, email=?, first_name=?, last_name=?, occupation=?, password=?, profile_photo=?, state=?, username=? where user_id=? [22001-210]
+2022-04-21 12:24:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "MESSAGE CHARACTER VARYING(255)": "'To be fair, you have to have a very high IQ to understand Rick and Morty. The h... (280)"; SQL statement:
+insert into posts (post_id, author_user_id, date_posted, like_count, message) values (default, ?, ?, ?, ?) [22001-210]

@@ -1,5 +1,7 @@
-<form action="submit">
-    <input type="text" [(ngModel)]="message" name="message" placeholder="Write a Post">
-    <input type="file">
-    <button (click)="createPost()">Post</button>
-</form>
+<div><input type="text" [(ngModel)]="message" name="message" placeholder="Write a Post" maxlength="255"></div>
+<div>
+    <form enctype="multipart/form-data">
+        <input type="file" [(ngModel)]="photo" name="photo">
+        <button (click)="createPost()">Post</button>
+    </form>
+</div>

@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { PostPromptComponent } from './components/posts/post-prompt/post-prompt.component';
 import { NavComponent } from './nav/nav/nav.component';
+import { LoginNavComponent } from './nav/login-nav/login-nav.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { NavComponent } from './nav/nav/nav.component';
     DashboardComponent,
     PostPromptComponent,
     NavComponent,
+    LoginNavComponent,
   ],
   imports: [
     BrowserModule,
