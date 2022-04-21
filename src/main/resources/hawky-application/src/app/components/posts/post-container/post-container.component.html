@@ -3,7 +3,7 @@
         <div class="postItem">
             <span class="postAuthor" style="font-weight: bold;">
                 <span *ngIf="post.author.profilePhoto == null">
-                    <img src="https://hawky-photos-bucket.s3.amazonaws.com/3c56ca1c-37b8-4c0d-aa00-5baf9aca863c.png" alt={{post.author.username}} style="max-height: 30px; max-width: 30px">
+                    <img class="profile-photo" src="https://hawky-photos-bucket.s3.amazonaws.com/3c56ca1c-37b8-4c0d-aa00-5baf9aca863c.png" alt={{post.author.username}} style="max-height: 30px; max-width: 30px">
                 </span>
                 <span *ngIf="post.author.profilePhoto != null">
                     <img src={{post.author.profilePhoto}} style="max-height: 30px; max-width: 30px">
