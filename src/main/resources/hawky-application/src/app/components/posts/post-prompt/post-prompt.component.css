@@ -1,0 +1,30 @@
+.form-prompt {
+    font-family:'Cinzel', serif;;
+    display:flex;
+    flex-direction:column;
+    background-color: rgba(128, 0, 0, 0.77);
+    padding: 20px;
+    margin-top: 1%;
+    width: 50%;
+    border-radius: 8px;
+    align-self: center;
+    padding: 8px;
+}
+
+.file-upload {
+    background-color: rgba(128, 0, 0, 0.9);
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 8px;
+    width: 100%;
+    align-self: center;
+    margin-top: 5px;
+}
+
+.post-btn {
+    font-family: 'Cinzel', serif;
+    margin-top: 10px;
+    color: white;
+    background-color: rgb(90, 0, 0);
+    width: 100%;
+}
