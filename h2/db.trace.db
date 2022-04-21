@@ -1,6 +1,0 @@
-2022-04-19 16:59:31 jdbc[33]: exception
-org.h2.jdbc.JdbcSQLDataException: Value too long for column "STATE CHARACTER VARYING(2)": "'Location' (8)"; SQL statement:
-update users set city=?, email=?, first_name=?, last_name=?, occupation=?, password=?, profile_photo=?, state=?, username=? where user_id=? [22001-210]
-2022-04-19 22:55:14 jdbc[14]: exception
-org.h2.jdbc.JdbcSQLDataException: Value too long for column "STATE CHARACTER VARYING(2)": "'State' (5)"; SQL statement:
-update users set city=?, email=?, first_name=?, last_name=?, occupation=?, password=?, profile_photo=?, state=?, username=? where user_id=? [22001-210]
