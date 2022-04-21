@@ -1,8 +1,9 @@
-<h3>Login Page</h3>
+<app-nav></app-nav>
+<div id="login-container" class="container center" style="text-align: center;">
+    <div><input type="text" [(ngModel)]="username" placeholder="Username"></div>
+    <div><input type="password" [(ngModel)]="password" placeholder="Password"></div>
 
-<input type="text" [(ngModel)]="username" placeholder="Username">
-<input type="password" [(ngModel)]="password" placeholder="Password">
+    <div><button id="login-button" (click)="login()">Login</button></div>
+</div>
 
-<button (click)="login()">Login</button>
-
-<button (click)="register()">Register</button>
+<div class="container center" style="text-align: center;"><button id="reg-button" (click)="register()">Register</button></div>
