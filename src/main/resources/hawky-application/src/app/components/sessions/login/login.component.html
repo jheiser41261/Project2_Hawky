@@ -1,4 +1,4 @@
-<app-nav></app-nav>
+<!-- <app-nav></app-nav>
 <div id="login-container" class="container center" style="text-align: center;">
     <div><input type="text" [(ngModel)]="username" placeholder="Username"></div>
     <div><input type="password" [(ngModel)]="password" placeholder="Password"></div>
@@ -6,4 +6,42 @@
     <div><button id="login-button" (click)="login()">Login</button></div>
 </div>
 
-<div class="container center" style="text-align: center;"><button id="reg-button" (click)="register()">Register</button></div>
+<div class="container center" style="text-align: center;"><button id="reg-button" (click)="register()">Register</button></div> -->
+
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login to Fire Nation</title>
+    <link rel="stylesheet" href="/app/components/sessions/login/login.component.css">
+  </head>
+  <body>
+    <div class="center">
+      <h1>Login</h1>
+      <form method="post">
+
+        <div class="txt_field">
+          <input type="text" [(ngModel)]="username" required>
+          <span></span>
+          <label>Username</label>
+        </div>
+
+        <div class="txt_field">
+          <input type="password" [(ngModel)]="password" required>
+          <span></span>
+          <label>Password</label>
+        </div>
+
+        <!-- <div class="pass">Forgot Password?</div> -->
+        <input type="submit" (click)="login()" value="Login">
+        <div class="signup_link">
+          Not a member? <a style="cursor : pointer" (click)="register()">Register</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- <script src="./login.js"></script> -->
+    <script src="./login.component.ts"></script>
+  </body>
+</html>
