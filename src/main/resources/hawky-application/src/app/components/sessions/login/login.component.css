@@ -6,6 +6,10 @@
   font-family: "Poppins", sans-serif;
 }
 
+h1{
+  color: white;
+}
+
 body{
     background-image: url(../../../images/bg4.jpg);
     background-repeat: no-repeat;
@@ -22,7 +26,7 @@ body{
   background: white;
   border-radius: 10px;
   box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
-  background-color: rgba(86, 86, 86, 0.83);
+  background-color: rgba(86, 86, 86, 0.00);
 }
 .center h1{
   text-align: center;
@@ -46,6 +50,7 @@ form .txt_field{
   border: none;
   background: none;
   outline: none;
+  color: white;
 }
 .txt_field label{
   position: absolute;
@@ -64,13 +69,13 @@ form .txt_field{
   left: 0;
   width: 0%;
   height: 2px;
-  background: #2691d9;
+  background: #B62203;
   transition: .5s;
 }
 .txt_field input:focus ~ label,
 .txt_field input:valid ~ label{
   top: -5px;
-  color: #2691d9;
+  color: #B62203;
 }
 .txt_field input:focus ~ span::before,
 .txt_field input:valid ~ span::before{
@@ -88,7 +93,7 @@ input[type="submit"]{
   width: 100%;
   height: 50px;
   border: 1px solid;
-  background: #2691d9;
+  background: #B62203;
   border-radius: 25px;
   font-size: 18px;
   color: #e9f4fb;
@@ -97,7 +102,7 @@ input[type="submit"]{
   outline: none;
 }
 input[type="submit"]:hover{
-  border-color: #2691d9;
+  border-color: #B62203;
   transition: .5s;
 }
 .signup_link{
@@ -107,7 +112,7 @@ input[type="submit"]:hover{
   color: #666666;
 }
 .signup_link a{
-  color: #2691d9;
+  color: #B62203;
   text-decoration: none;
 }
 .signup_link a:hover{
