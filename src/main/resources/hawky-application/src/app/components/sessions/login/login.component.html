@@ -1,8 +1,37 @@
-<h3>Login Page</h3>
+<!DOCTYPE html>
 
-<input type="text" [(ngModel)]="username" placeholder="Username">
-<input type="text" [(ngModel)]="password" placeholder="Password">
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login to Fire Nation</title>
+    <link rel="stylesheet" href="/app/components/sessions/login/login.component.css">
+  </head>
+  <body>
+    <div class="center">
+      <h1>Login</h1>
+      <form method="post">
 
-<button (click)="login()">Login</button>
+        <div class="txt_field">
+          <input type="text" [(ngModel)]="username" required>
+          <span></span>
+          <label>Username</label>
+        </div>
 
-<button (click)="register()">Register</button>
+        <div class="txt_field">
+          <input type="password" [(ngModel)]="password" required>
+          <span></span>
+          <label>Password</label>
+        </div>
+
+        <!-- <div class="pass">Forgot Password?</div> -->
+        <input type="submit" (click)="login()" value="Login">
+        <div class="signup_link">
+          Not a member? <a style="cursor : pointer" (click)="register()">Register</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- <script src="./login.js"></script> -->
+    <script src="./login.component.ts"></script>
+  </body>
+</html>
