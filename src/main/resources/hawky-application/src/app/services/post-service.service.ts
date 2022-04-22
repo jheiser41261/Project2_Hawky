@@ -47,4 +47,10 @@ export class PostServiceService {
       withCredentials: true
     });
   }
+
+  likePost(postId : number){
+    return this.httpClient.patch<any>(`http://localhost:9000/post/like/${postId}`, {
+      withCredentials: true
+    });
+  }
 }

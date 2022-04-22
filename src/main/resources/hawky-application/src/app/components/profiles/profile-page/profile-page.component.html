@@ -23,6 +23,24 @@
 
 <h4>Posts by {{username}}</h4>
 <div *ngFor="let post of posts" class="postItem">
-    <span>{{post.datePosted}} - </span>
-    <span>{{post.message}}</span>
+    <span class="postAuthor" style="font-weight: bold;">
+        <span *ngIf="post.author.profilePhoto == null">
+            <img class="profile-photo" src="https://hawky-photos-bucket.s3.amazonaws.com/3c56ca1c-37b8-4c0d-aa00-5baf9aca863c.png" alt={{post.author.username}} style="max-height: 30px; max-width: 30px">
+        </span>
+        <span *ngIf="post.author.profilePhoto != null">
+            <img src={{post.author.profilePhoto}} style="max-height: 30px; max-width: 30px">
+        </span>
+        <span style="margin-left: 10px; cursor: pointer; text-decoration: underline;">{{post.author.username}}</span>
+    </span>
+    <div style="border: 3px double black; margin: 5px;">
+        <div>{{post.message}}</div>
+    </div>
+
+    <div *ngIf="post.photoUrl != null">
+        <img src={{post.photoUrl}} style="max-width: 400px;">
+    </div>
+
+    <div>
+        <span>Likes: {{post.likeCount}}</span>
+    </div>
 </div>

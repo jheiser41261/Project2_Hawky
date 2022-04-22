@@ -36,6 +36,13 @@ export class PostContainerComponent implements OnInit {
     });
   }
 
+  likePost(postId : number){
+    this.postService.likePost(postId).subscribe(responseBody => {
+      console.log(responseBody);
+      location.reload();
+    });
+  }
+
   goToProfile(e : any){
     this.router.navigate([`/profile/${e.target.innerText}`]);
   }

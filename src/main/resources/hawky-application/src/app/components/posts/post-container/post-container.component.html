@@ -18,9 +18,14 @@
                 <img src={{post.photoUrl}} style="max-width: 400px;">
             </div>
 
-            <div style="font-style: italic;">
-                <span>{{post.datePosted}}</span>
+            <div>
+                <button (click)="likePost(post.postId)">Like</button>
+                <span>{{post.likeCount}}</span>
             </div>
+
+            <!-- <div style="font-style: italic;">
+                <span>{{post.datePosted}}</span>
+            </div> -->
         </div>
     </div>
 </div>

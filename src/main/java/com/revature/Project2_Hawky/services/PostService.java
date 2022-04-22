@@ -50,39 +50,15 @@ public class PostService {
         postDAO.deletePost(post);
     }
 
-/*    public Post updateLikeCountOnPost(Integer postId, Integer postId_fk){
-        Post post = postDAO.getPostById(postId);
-
-        postDAO.updateLikeCount(postId, postId_fk);
-
-        return post;
-    }*/
-
     public String likePost(Post post){
 
-        //user.setUserId(user.getUserId());
         if(post.getLikeCount() == null)
             post.setLikeCount(0);
 
         post.setLikeCount(post.getLikeCount() + 1);
 
-
         postDAO.editPost(post);
 
         return "Number of Likes on Post #" + post.getPostId() + " : " + post.getLikeCount();
     }
-
-    /*public String unlikePost(Post post, User user){
-
-        user.setUserId(user.getUserId());
-
-        if(post.userHasLiked == true){
-            post.setLikeCount(post.getLikeCount() - 1);
-            post.userHasLiked = false;
-        }
-
-        postDAO.editPost(post);
-
-        return "Number of Likes on Post #" + post.getPostId() + " : " + post.getLikeCount();
-    }*/
 }
