@@ -18,11 +18,11 @@ public class Like {
     private Integer likeId;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "postId_fk")
+    @JoinColumn(referencedColumnName = "postId")
     private Post post;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "userId_fk")
+    @JoinColumn(referencedColumnName = "userId")
     private User user;
 
 }
