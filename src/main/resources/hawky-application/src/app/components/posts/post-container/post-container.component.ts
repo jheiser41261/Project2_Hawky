@@ -13,7 +13,10 @@ export class PostContainerComponent implements OnInit {
   posts : Array<any> = [];
   photos : Array<any> = [];
 
-  postId : Array<any> = [];
+  hasPhoto : boolean = false;
+
+  photoUrl : string = "";
+  photoPost : number = 0;
 
   constructor(private postService : PostServiceService, private photoService : PhotoServiceService, private router : Router) { }
 
@@ -24,6 +27,22 @@ export class PostContainerComponent implements OnInit {
   getAllPosts(){
     this.postService.getAllPosts().subscribe(responseBody => {
       this.posts = responseBody.data;
+      console.log(this.posts);
+    });
+  }
+
+  getPhotosByPost(postId : number){
+    this.photoService.getPhotosByPost(postId).subscribe(responseBody => {
+      this.photos = responseBody.data;
+
+      if(this.photos.length > 0) {
+        this.hasPhoto = true;
+        this.photoUrl = this.photos[0].photo;
+        this.photoPost = this.photos[0].post.postId;
+      } else {
+        this.photoPost = 0;
+        this.hasPhoto = false;
+      }
     });
   }
 

@@ -10,8 +10,19 @@
                 </span>
                 <span style="margin-left: 10px; cursor: pointer; text-decoration: underline;" (click)="goToProfile($event)">{{post.author.username}}</span>
             </span>
-            <div style="border: 3px double black; margin: 5px;">{{post.message}}</div>
-            <span style="font-style: italic;">{{post.datePosted}}</span>
+            <div style="border: 3px double black; margin: 5px;">
+                <div>{{post.message}}</div>
+            </div>
+
+            <button (click)="getPhotosByPost(post.postId)">Load Photo</button>
+
+            <div *ngIf="hasPhoto && post.postId == photoPost">
+                <img src={{photoUrl}} style="max-width: 400px;">
+            </div>
+
+            <div style="font-style: italic;">
+                <span>{{post.datePosted}}</span>
+            </div>
         </div>
     </div>
 </div>

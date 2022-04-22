@@ -43,7 +43,7 @@ export class PostPromptComponent implements OnInit {
           });
         }
 
-        //location.reload();
+        location.reload();
       });
     }
   }
