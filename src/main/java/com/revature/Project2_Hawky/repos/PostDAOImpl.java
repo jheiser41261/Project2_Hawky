@@ -3,6 +3,7 @@ package com.revature.Project2_Hawky.repos;
 import com.revature.Project2_Hawky.models.Post;
 import com.revature.Project2_Hawky.models.User;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -57,4 +58,17 @@ public class PostDAOImpl implements PostDAO {
         Session session = em.unwrap(Session.class);
         session.delete(post);
     }
+
+/*    @Override
+    public void updateLikeCount(Integer postId, Integer postId_fk) {
+        Session session = em.unwrap(Session.class);
+
+        String hql = "update Post set like_Count = " + "(select count(*) from likes where post_Id_fk = :post_Id_fk) " + "where post_Id = :postId";
+
+        Query query = session.createQuery(hql);
+        query.setParameter("post_Id_fk", postId_fk);
+        query.setParameter("postId", postId);
+
+        query.executeUpdate();
+    }*/
 }

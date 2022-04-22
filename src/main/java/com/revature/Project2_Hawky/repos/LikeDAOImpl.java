@@ -1,16 +1,16 @@
 package com.revature.Project2_Hawky.repos;
 
-import com.revature.Project2_Hawky.models.Like;
+/*import com.revature.Project2_Hawky.models.Like;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-@Repository
+@Repository*/
 public class LikeDAOImpl implements LikeDAO{
 
-    @PersistenceContext
+/*    @PersistenceContext
     EntityManager em;
 
     @Override
@@ -29,5 +29,5 @@ public class LikeDAOImpl implements LikeDAO{
     public void unlikePost(Like like) {
         Session session = em.unwrap(Session.class);
         session.delete(like);
-    }
+    }*/
 }

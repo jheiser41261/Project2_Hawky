@@ -85,11 +85,11 @@ public class PostController {
         return new JsonResponse(false, "Error", null);
     }
 
-    /*@PatchMapping("like/{postId}")
+    @PatchMapping("like/{postId}")
     public String likePost(@PathVariable Integer postId){
         Post post = postService.getPostById(postId);
         return postService.likePost(post);
-    }*/
+    }
 
 /*    @PatchMapping("like/{postId}/{userId}")
     public String likePost(@PathVariable Integer postId, @PathVariable Integer userId){
