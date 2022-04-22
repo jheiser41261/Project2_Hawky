@@ -41,4 +41,7 @@ public class Post {
 
     @CreationTimestamp
     private Date datePosted;
+
+    @Column
+    public Boolean userHasLiked;
 }
