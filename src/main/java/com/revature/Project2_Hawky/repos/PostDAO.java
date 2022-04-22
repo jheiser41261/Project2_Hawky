@@ -9,9 +9,8 @@ public interface PostDAO {
     List<Post> getPostsByAuthor(User author);
     List<Post> getAllPosts();
     Post getPostById(Integer postId);
-
     Integer createPost(Post post, User author);
-
     void editPost(Post post);
     void deletePost(Post post);
+    //void updateLikeCount(Integer postId, Integer postId_fk);
 }

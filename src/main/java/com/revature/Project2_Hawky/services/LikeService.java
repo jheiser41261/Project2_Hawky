@@ -1,6 +1,6 @@
 package com.revature.Project2_Hawky.services;
 
-import com.revature.Project2_Hawky.models.Like;
+/*import com.revature.Project2_Hawky.models.Like;
 import com.revature.Project2_Hawky.repos.LikeDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 
 @Service
-@Transactional
+@Transactional*/
 public class LikeService {
 
-    private LikeDAO likeDAO;
+/*    private LikeDAO likeDAO;
 
     @Autowired
     public LikeService(LikeDAO likeDAO) { this.likeDAO = likeDAO; }
@@ -28,6 +28,6 @@ public class LikeService {
     public void unlikePost(Integer likeId){
         Like like = likeDAO.getLikeById(likeId);
         likeDAO.unlikePost(like);
-    }
+    }*/
 
 }
