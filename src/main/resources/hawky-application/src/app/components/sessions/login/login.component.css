@@ -5,12 +5,13 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 body{
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(120deg,#2980b9, #8e44ad);
-  height: 100vh;
-  overflow: hidden;
+  background-image: url(../../../images/bg3.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
 }
 .center{
   position: absolute;
@@ -21,6 +22,7 @@ body{
   background: white;
   border-radius: 10px;
   box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+  background-color: rgba(124, 124, 124, .33);
 }
 .center h1{
   text-align: center;
@@ -110,4 +112,9 @@ input[type="submit"]:hover{
 }
 .signup_link a:hover{
   text-decoration: underline;
+}
+
+.tile {
+  font-family: 'Cinzel', serif;
+  font-weight: bolder;
 }

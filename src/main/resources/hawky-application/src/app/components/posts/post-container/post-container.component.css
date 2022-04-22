@@ -15,3 +15,10 @@
     border-radius: 3px;
     border-color: black;
 }
+
+.photo-btn {
+    font-family: 'Cinzel', serif;
+    color: white;
+    background-color: rgb(90, 0, 0);
+    width: 100%;
+}

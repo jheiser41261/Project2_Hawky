@@ -14,7 +14,7 @@
                 <div>{{post.message}}</div>
             </div>
 
-            <button (click)="getPhotosByPost(post.postId)">Load Photo</button>
+            <button class="photo-btn" (click)="getPhotosByPost(post.postId)">Load Photo</button>
 
             <div *ngIf="hasPhoto && post.postId == photoPost">
                 <img src={{photoUrl}} style="max-width: 400px;">
