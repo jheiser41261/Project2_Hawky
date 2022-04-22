@@ -11,11 +11,11 @@ body{
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background-image: url(../../../images/bg3.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
+  background-image: url(../../../images/bg4.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
 }
 .container{
   max-width: 700px;
