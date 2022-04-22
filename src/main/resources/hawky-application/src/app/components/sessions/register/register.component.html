@@ -25,27 +25,27 @@
         <div class="user-details">
           <div class="input-box">
             <span class="details">First Name</span>
-            <input type="text" [(ngModel)]="firstName" placeholder="Enter your first name" required>
+            <input type="text" [(ngModel)]="firstName" name="firstName" placeholder="Enter your first name" required>
           </div>
           <div class="input-box">
             <span class="details">Last Name</span>
-            <input type="text" [(ngModel)]="lastName" placeholder="Enter your last name" required>
+            <input type="text" [(ngModel)]="lastName" name="lastName" placeholder="Enter your last name" required>
           </div>
           <div class="input-box">
             <span class="details">Username</span>
-            <input type="text" [(ngModel)]="username" placeholder="Enter your username" required>
+            <input type="text" [(ngModel)]="username" name="username" placeholder="Enter your username" required>
           </div>
           <div class="input-box">
             <span class="details">Email</span>
-            <input type="text" [(ngModel)]="email" placeholder="Enter your email" required>
+            <input type="text" [(ngModel)]="email" name="email" placeholder="Enter your email" required>
           </div>
           <div class="input-box">
             <span class="details">Password</span>
-            <input type="password" [(ngModel)]="password" placeholder="Enter your password" required>
+            <input type="password" [(ngModel)]="password" name="password" placeholder="Enter your password" required>
           </div>
           <div class="input-box">
             <span class="details">Confirm Password</span>
-            <input type="password" [(ngModel)]="password" placeholder="Confirm your password" required>
+            <input type="password" [(ngModel)]="password" name="pass-confirm" placeholder="Confirm your password" required>
           </div>
         </div>
 
@@ -53,7 +53,7 @@
           <input type="submit" value="Register">
         </div>
           <div (click)="login()" class="signin_link">
-          Already have an account? <a href="#"><span>Sign in</span></a>
+          Already have an account? <a routerLink=""><span>Sign in</span></a>
         </div>
       </form>
     </div>
