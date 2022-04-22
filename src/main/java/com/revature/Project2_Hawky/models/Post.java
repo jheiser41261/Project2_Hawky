@@ -25,6 +25,12 @@ public class Post {
         this.author = author;
     }
 
+    public Post(Integer postId, String message, User author){
+        this.postId = postId;
+        this.message = message;
+        this.author = author;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer postId;

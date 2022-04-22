@@ -18,6 +18,52 @@ class UserServiceTest {
     }
 
     @Test
+    void createUser(){
+        User newUser = new User(
+                1,
+                "user",
+                "pass",
+                "User",
+                "One",
+                "test@test.com",
+                "New York",
+                "NY",
+                "Programmer",
+                "test.jpg"
+        );
+        Mockito.when(userDAO.getUserById(newUser.getUserId())).thenReturn(newUser);
+
+        userService.createUser(newUser);
+
+        User expectedResult = newUser;
+        User actualResult = userService.getUserById(newUser.getUserId());
+
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    void editUserInfo() {
+        User userToEdit = new User(
+                1,
+                "user",
+                "pass",
+                "User",
+                "One",
+                "test@test.com",
+                "New York",
+                "NY",
+                "Programmer",
+                "test.jpg"
+        );
+        Mockito.when(userDAO.getUserById(userToEdit.getUserId())).thenReturn(userToEdit);
+
+        User expectedResult = userToEdit;
+        User actualResult = userService.updateInfo(userToEdit);
+
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
     void validateCredentialsBadUsername() {
         String expectedUsername = "incorrect";
         String expectedPassword = "correct";
