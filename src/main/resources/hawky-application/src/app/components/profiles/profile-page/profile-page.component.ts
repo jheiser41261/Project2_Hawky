@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PhotoServiceService } from 'src/app/services/photo-service.service';
 import { PostServiceService } from 'src/app/services/post-service.service';
 import { SessionServiceService } from 'src/app/services/session-service.service';
 import { UserServiceService } from 'src/app/services/user-service.service';
@@ -25,14 +26,18 @@ export class ProfilePageComponent implements OnInit {
   city : string = "";
   state : string = "";
 
-  profilePicUrl : String = "https://hawky-photos-bucket.s3.amazonaws.com/3c56ca1c-37b8-4c0d-aa00-5baf9aca863c.png";
+  profilePicUrl : String = "";
 
   posts : Array<any> = [];
+
+  photo : string | Blob = "";
+  hasPhoto : boolean = false;
 
   constructor(private route : ActivatedRoute, 
     private userService : UserServiceService, 
     private postService : PostServiceService, 
     private sessionService : SessionServiceService,
+    private photoService : PhotoServiceService,
     private router : Router
     ) {
     this.route.params.subscribe(params => {
@@ -42,6 +47,11 @@ export class ProfilePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkSession();
+  }
+
+  selectFile(event : any){
+    this.photo = event.target.files[0];
+    this.hasPhoto = true;
   }
 
   checkSession(){
@@ -66,6 +76,8 @@ export class ProfilePageComponent implements OnInit {
       this.city = (responseBody.data.city == "" || responseBody.data.city == null) ? "City" : responseBody.data.city;
       this.state = (responseBody.data.state == "" || responseBody.data.state == null) ? "State" : responseBody.data.state;
 
+      this.profilePicUrl = (responseBody.data.profilePhoto == "" || responseBody.data.profilePhoto == null) ? "https://hawky-photos-bucket.s3.amazonaws.com/3c56ca1c-37b8-4c0d-aa00-5baf9aca863c.png" : responseBody.data.profilePhoto;
+
       if(this.currentUser.userId == responseBody.data.userId) this.isCurrentUser = true;
     })
   }
@@ -76,7 +88,7 @@ export class ProfilePageComponent implements OnInit {
     })
   }
 
-  editInfo(){
+  editInfo(event : any){
     this.user.occupation = this.occupation;
     this.user.city = this.city;
     
@@ -84,10 +96,29 @@ export class ProfilePageComponent implements OnInit {
 
     this.user.state = this.state;
 
+    if(this.hasPhoto){
+      let formData : FormData = new FormData();
+      formData.append("photo", this.photo);
+
+      this.photoService.uploadPhoto(this.user.userId, formData).subscribe(responseBody => {
+        console.log(responseBody.data);
+        this.user.profilePhoto = responseBody.data;
+        
+        this.updateInfo();
+
+        location.reload();
+      });
+    } else {
+      this.userService.updateUserInfo(this.user).subscribe(responseBody => {
+        console.log(responseBody);
+        location.reload();
+      });
+    }
+  }
+
+  updateInfo(){
     this.userService.updateUserInfo(this.user).subscribe(responseBody => {
       console.log(responseBody);
     });
-
-    location.reload();
   }
 }

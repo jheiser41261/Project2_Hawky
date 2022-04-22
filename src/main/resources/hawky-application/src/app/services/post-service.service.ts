@@ -27,4 +27,24 @@ export class PostServiceService {
       withCredentials: true
     });
   }
+
+  getPostById(postId : number){
+    return this.httpClient.get<any>(`http://localhost:9000/post/${postId}`, {
+      withCredentials: true
+    });
+  }
+
+  editPost(postId : number, author : any, message : string, likeCount : number, datePosted : Date, userHasLiked : boolean, photoUrl : string){
+    return this.httpClient.put<any>(`http://localhost:9000/post`, {
+      "postId" : postId,
+      "author" : author,
+      "message" : message,
+      "likeCount" : likeCount,
+      "datePosted" : datePosted,
+      "userHasLiked" : userHasLiked,
+      "photoUrl" : photoUrl
+    }, {
+      withCredentials: true
+    });
+  }
 }

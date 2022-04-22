@@ -1,12 +1,13 @@
 <div class="info-container">
-    <img src={{profilePicUrl}} alt={{username}} style="max-height: 150px; max-width: 150px; padding: 10px;">
+    <img src={{profilePicUrl}} alt={{username}} style="max-height: 200px; max-width: 200px; padding: 10px;">
     <span style="position: fixed; top: 20px;">
-        <form action="submit" *ngIf="isCurrentUser">
+        <form action="submit" *ngIf="isCurrentUser" (submit)="editInfo($event)">
             <div style="font-weight: bold">{{firstName}} {{lastName}}</div>
             <div><input type="text" [(ngModel)]="occupation" name="occupation" style="border: none;" placeholder={{occupation}}></div>
             <div><input type="text" [(ngModel)]="city" name="city" style="border: none;" placeholder={{city}}></div>
             <div><input type="text" [(ngModel)]="state" name="state" style="border: none;" maxlength="2" placeholder={{state}}></div>
-            <button (click)="editInfo()">Edit Info</button>
+            <input class="file-upload"type="file" (change)="selectFile($event)" name="photo">
+            <button>Edit Info</button>
         </form>
 
         <div *ngIf="!isCurrentUser">

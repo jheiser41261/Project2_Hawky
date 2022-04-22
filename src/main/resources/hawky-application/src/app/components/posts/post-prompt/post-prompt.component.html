@@ -1,6 +1,6 @@
 <div class="form-prompt container center"><input type="text" [(ngModel)]="message" name="message" placeholder="Write a Post" maxlength="255">
     <form (submit)="createPost($event)">
-        <input class="file-upload"type="file" (change)="selectFile($event)" name="photo">
+        <input class="file-upload" type="file" (change)="selectFile($event)" name="photo">
         <button class="post-btn">Post</button>
     </form>
 </div>

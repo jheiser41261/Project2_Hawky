@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
 
   username : string = "";
   password : string = "";
+  passConfirm : string = "";
   firstName : string = "";
   lastName : string = "";
   email : string = "";
@@ -21,10 +22,12 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
-    this.userService.register(this.username, this.password, this.firstName, this.lastName, this.email).subscribe(responseBody => {
-      console.log(responseBody);
-      this.router.navigate(['']);
-    });
+    if(this.password == this.passConfirm){
+      this.userService.register(this.username, this.password, this.firstName, this.lastName, this.email).subscribe(responseBody => {
+        console.log(responseBody);
+        this.router.navigate(['']);
+      });
+    }
   }
 
   login(){

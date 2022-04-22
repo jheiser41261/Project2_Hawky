@@ -33,17 +33,21 @@ export class PostPromptComponent implements OnInit {
       this.postService.createPost(this.message).subscribe(responseBody => {
         console.log(responseBody);
         let postId = responseBody.data.postId;
+        let post = responseBody.data;
 
         if(this.hasPhoto){
           let formData : FormData = new FormData();
           formData.append("photo", this.photo);
 
           this.photoService.uploadPhoto(postId, formData).subscribe(responseBody => {
-            console.log(responseBody.data);
+            let photoUrl = responseBody.data;
+            this.postService.editPost(postId, post.author, post.message, post.likeCount, post.datePosted, post.userHasLiked, photoUrl).subscribe(responseBody => {
+              location.reload();
+            })
           });
+        } else{
+          location.reload();
         }
-
-        location.reload();
       });
     }
   }

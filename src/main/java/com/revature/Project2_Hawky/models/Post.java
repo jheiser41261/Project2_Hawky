@@ -44,4 +44,7 @@ public class Post {
 
     @Column
     public Boolean userHasLiked;
+
+    @Column
+    private String photoUrl;
 }

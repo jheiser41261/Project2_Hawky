@@ -36,7 +36,8 @@ export class UserServiceService {
         "email" : user.email,
         "city" : user.city,
         "state" : user.state,
-        "occupation" : user.occupation
+        "occupation" : user.occupation,
+        "profilePhoto" : user.profilePhoto
     }, {
       withCredentials: true
     });
