@@ -1,8 +1,7 @@
- img {
+ #pfp{
      border-radius: 50%;
      border: solid;
-     margin-right: 15px;
-     margin-bottom: 15px;
+     margin-top: 25px;
  }
  h4 {
     font-family: 'Cinzel', serif;
@@ -37,4 +36,9 @@
 .postItem {
     color: white;
     margin-left: 2%;
+    width: 90%;
+    background-color: rgba(128, 0, 0, 0.9);
+    margin: 5px;
+    border-radius: 8px;
+    font-family: 'Cinzel', serif;
 }

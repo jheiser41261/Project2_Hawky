@@ -1,46 +1,51 @@
-<div class="info-container">
-    <img src={{profilePicUrl}} alt={{username}} style="max-height: 200px; max-width: 200px; padding: 10px;">
-    <span style="position: fixed; top: 20px;">
+<app-profile-nav></app-profile-nav>
+<div class="info-container" style="display: flex; justify-content: center;">
+    <span>
+        <img id="pfp" src={{profilePicUrl}} alt={{username}} style="max-height: 200px; max-width: 200px; padding: 10px;">
+    </span>
+    <span style="margin-top: 30px;">
         <form action="submit" *ngIf="isCurrentUser" (submit)="editInfo($event)">
-            <div class="profile" style="font-weight: bold">{{firstName}} {{lastName}}</div>
-            <div class="profile"><input type="text" [(ngModel)]="occupation" name="occupation" style="border: none;" placeholder={{occupation}}></div>
-            <div class="profile"><input type="text" [(ngModel)]="city" name="city" style="border: none;" placeholder={{city}}></div>
-            <div class="profile"><input type="text" [(ngModel)]="state" name="state" style="border: none;" maxlength="2" placeholder={{state}}></div>
-            <input class="file-upload"type="file" (change)="selectFile($event)" name="photo">
-            <button>Edit Info</button>
+            <h3 class="profile" style="font-weight: bold">{{firstName}} {{lastName}}</h3>
+            <div class="profile"><input type="text" [(ngModel)]="occupation" name="occupation" style="border: none; background: none; color: white; text-align: center;" placeholder={{occupation}}></div>
+            <div class="profile"><input type="text" [(ngModel)]="city" name="city" style="border: none; background: none; color: white; text-align: center;" placeholder={{city}}></div>
+            <div class="profile"><input type="text" [(ngModel)]="state" name="state" style="border: none; background: none; color: white; text-align: center;" maxlength="2" placeholder={{state}}></div>
+            <input class="container center" type="file" (change)="selectFile($event)" name="photo" style="width: 80%; margin-top: 10px;">
+            <div class="container center"><button style="margin-top: 10px; color: white; background-color: rgb(90, 0, 0);">Edit Info</button></div>
         </form>
 
-        <div *ngIf="!isCurrentUser">
-            <div style="font-weight: bold">{{firstName}} {{lastName}}</div>
-            <div>{{occupation}}</div>
-            <div>{{city}}</div>
-            <div>{{state}}</div>
+        <div *ngIf="!isCurrentUser" style="margin-left: 20px; margin-top: 30px;">
+            <h3 style="font-weight: bold">{{firstName}} {{lastName}}</h3>
+            <div style="text-align: center;">{{occupation}}</div>
+            <div style="text-align: center;">{{city}}</div>
+            <div style="text-align: center;">{{state}}</div>
         </div>
     </span>
 </div>
 
-<div *ngIf="isCurrentUser"><app-post-prompt></app-post-prompt></div>
+<div *ngIf="isCurrentUser" style="margin-top: 20px;"><app-post-prompt></app-post-prompt></div>
 
-<h4>Posts by {{username}}</h4>
-<div *ngFor="let post of posts" class="postItem">
-    <span class="postAuthor" style="font-weight: bold;">
-        <span *ngIf="post.author.profilePhoto == null">
-            <img class="profile-photo" src="https://hawky-photos-bucket.s3.amazonaws.com/3c56ca1c-37b8-4c0d-aa00-5baf9aca863c.png" alt={{post.author.username}} style="max-height: 30px; max-width: 30px">
+<div class="container center">
+    <h4>Posts by {{username}}</h4>
+    <div *ngFor="let post of posts" class="postItem">
+        <span class="postAuthor" style="font-weight: bold;">
+            <span *ngIf="post.author.profilePhoto == null">
+                <img class="profile-photo" src="https://hawky-photos-bucket.s3.amazonaws.com/3c56ca1c-37b8-4c0d-aa00-5baf9aca863c.png" alt={{post.author.username}} style="max-height: 30px; max-width: 30px; margin: 10px;">
+            </span>
+            <span *ngIf="post.author.profilePhoto != null">
+                <img src={{post.author.profilePhoto}} style="max-height: 40px; max-width: 40px; margin: 10px;">
+            </span>
+            <span style="margin-left: 10px; cursor: pointer; text-decoration: underline;">{{post.author.username}}</span><span style="margin-left: 10px; margin-top: 9px;">{{post.datePosted}}</span>
         </span>
-        <span *ngIf="post.author.profilePhoto != null">
-            <img src={{post.author.profilePhoto}} style="max-height: 30px; max-width: 30px">
-        </span>
-        <span style="margin-left: 10px; cursor: pointer; text-decoration: underline;">{{post.author.username}}</span>
-    </span>
-    <div style="border: 3px double black; margin: 5px;">
-        <div>{{post.message}}</div>
-    </div>
-
-    <div *ngIf="post.photoUrl != null">
-        <img src={{post.photoUrl}} style="max-width: 400px;">
-    </div>
-
-    <div>
-        <span>Likes: {{post.likeCount}}</span>
+        <div style="border: 3px double black; margin: 5px;">
+            <div style="text-align: center;">{{post.message}}</div>
+        </div>
+    
+        <div *ngIf="post.photoUrl != null" class="container center">
+            <img src={{post.photoUrl}} style="max-width: 400px; border: 3px double black; margin: 5px;">
+        </div>
+    
+        <div>
+            <div style="text-align: center;">{{post.likeCount}} Likes</div>
+        </div>
     </div>
 </div>

@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { PostPromptComponent } from './components/posts/post-prompt/post-prompt.component';
 import { NavComponent } from './nav/nav/nav.component';
 import { LoginNavComponent } from './nav/login-nav/login-nav.component';
+import { ProfileNavComponent } from './nav/profile-nav/profile-nav.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { LoginNavComponent } from './nav/login-nav/login-nav.component';
     PostPromptComponent,
     NavComponent,
     LoginNavComponent,
+    ProfileNavComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,31 +1,27 @@
-<div class="container center" style="text-align: center; color: white">
+<div class="container center" style="text-align: center; color: white; width: 50%;">
     <div *ngFor="let post of posts">
         <div class="postItem">
             <span class="postAuthor" style="font-weight: bold;">
                 <span *ngIf="post.author.profilePhoto == null">
-                    <img class="profile-photo" src="https://hawky-photos-bucket.s3.amazonaws.com/3c56ca1c-37b8-4c0d-aa00-5baf9aca863c.png" alt={{post.author.username}} style="max-height: 30px; max-width: 30px">
+                    <img class="profile-photo" src="https://hawky-photos-bucket.s3.amazonaws.com/3c56ca1c-37b8-4c0d-aa00-5baf9aca863c.png" alt={{post.author.username}} style="max-height: 40px; max-width: 40px">
                 </span>
                 <span *ngIf="post.author.profilePhoto != null">
-                    <img src={{post.author.profilePhoto}} style="max-height: 30px; max-width: 30px">
+                    <img src={{post.author.profilePhoto}} style="max-height: 40px; max-width: 40px">
                 </span>
-                <span style="margin-left: 10px; cursor: pointer; text-decoration: underline;" (click)="goToProfile($event)">{{post.author.username}}</span>
+                <span style="margin-left: 10px; margin-top: 8px; cursor: pointer; text-decoration: underline;" (click)="goToProfile($event)">{{post.author.username}}</span><span style="margin-left: 10px; margin-top: 9px;">{{post.datePosted}}</span>
             </span>
             <div style="border: 3px double black; margin: 5px;">
                 <div>{{post.message}}</div>
             </div>
 
-            <div *ngIf="post.photoUrl != null">
-                <img src={{post.photoUrl}} style="max-width: 400px;">
+            <div *ngIf="post.photoUrl != null" >
+                <img src={{post.photoUrl}} style="max-width: 400px; border: 3px double black; margin: 5px;">
             </div>
 
-            <div>
-                <button (click)="likePost(post.postId)">Like</button>
-                <span>{{post.likeCount}}</span>
+            <div style="display: flex; justify-content: center;">
+                <button (click)="likePost(post.postId)" style="margin: 10px; color: white; background-color: rgb(90, 0, 0);">Like</button>
+                <h6 style="margin-top: 15px; margin-left: 50px;">{{post.likeCount}} Likes</h6>
             </div>
-
-            <!-- <div style="font-style: italic;">
-                <span>{{post.datePosted}}</span>
-            </div> -->
         </div>
     </div>
 </div>

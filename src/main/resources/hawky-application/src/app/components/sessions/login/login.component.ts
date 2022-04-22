@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     this.sessionService.login(this.username, this.password).subscribe(responseBody => {
       console.log(responseBody);
 
-      if(responseBody.success == true) this.router.navigate(['/dashboard'])
+      if(responseBody.success == true) this.router.navigate(['/dashboard']);
     });
   }
 
