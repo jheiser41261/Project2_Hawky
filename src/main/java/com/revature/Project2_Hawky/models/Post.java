@@ -41,10 +41,13 @@ public class Post {
 
     @CreationTimestamp
     private Date datePosted;
+<<<<<<< HEAD
 
     @Column
     public Boolean userHasLiked;
 
     @Column
     private String photoUrl;
+=======
+>>>>>>> dev
 }

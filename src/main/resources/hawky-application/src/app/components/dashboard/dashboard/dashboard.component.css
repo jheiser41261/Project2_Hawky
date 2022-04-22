@@ -1,7 +1,11 @@
+img {
+    border: 1px;
+}
+
 .title {
     font-family: 'Cinzel', serif;
     text-align: center;
-    margin-top: 3%;
+    margin-top: 1%;
     color: rgb(122, 122, 122);
     font-size: xx-large;
     font-weight: bold;
