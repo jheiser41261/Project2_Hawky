@@ -20,6 +20,7 @@
     align-self: center;
     margin-top: 5px;
     font-weight: bold;
+    border: solid;
 }
 
 .post-btn {
